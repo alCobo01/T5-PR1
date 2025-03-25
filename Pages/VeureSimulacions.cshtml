@@ -1,0 +1,55 @@
+﻿@page  
+@model T5_PR1.Pages.VeureSimulacionsModel  
+@{  
+    ViewData["Title"] = "Simulacions";  
+}  
+
+<h2>Llistat de simulacions</h2>  
+<div>
+    <a asp-page="AfegirSimulacio" class="btn btn-primary" style="margin-bottom: 20px">Afegir simulació</a>
+</div>
+
+@if (Model.Simulacions.Count() != 0)
+{
+    <p>S'han fet @Model.Simulacions.Count simulacions! </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tipus de simulació</th>
+                <th>Data</th>
+                <th>Dada</th>
+                <th>Rati</th>
+                <th>Cost</th>
+                <th>Preu</th>
+                <th>Energia generada</th>
+                <th>Cost total</th>
+                <th>Preu total</th>
+                <th>Benefici</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var simulacio in Model.Simulacions)
+            {
+                <tr>
+                    <td>@simulacio.Tipus</td>
+                    <td>@simulacio.Data</td>
+                    <td>@simulacio.Dada</td>
+                    <td>@simulacio.Rati</td>
+                    <td>@simulacio.Cost</td>
+                    <td>@simulacio.Preu</td>
+                    <td>@simulacio.EnergiaGenerada</td>
+                    <td>@simulacio.CostTotal</td>
+                    <td>@simulacio.PreuTotal</td>
+                    <td>@simulacio.Benefici</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-warning">
+        <p>Encara no has creat cap simulació!</p>
+    </div>
+}
+
