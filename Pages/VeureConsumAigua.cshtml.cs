@@ -8,11 +8,11 @@ namespace T5_PR1.Pages
     public class VeureConsumAiguaModel : PageModel
     {
         private readonly AppDbContext _context;
-        public List<ConsumAigua> Consums { get; set; }
-        public List<ConsumAigua> DeuMunicipisMesConsumidors { get; set; }
-        public List<ConsumAigua> ConsumMitjaPerComarca { get; set; }
-        public List<ConsumAigua> ConsumsSospitosos { get; set; }
-        public List<string> MunicipisAmbTendenciaCreixent { get; set; }
+        public List<ConsumAigua>? Consums { get; set; }
+        public List<ConsumAigua>? DeuMunicipisMesConsumidors { get; set; }
+        public List<ConsumAigua>? ConsumMitjaPerComarca { get; set; }
+        public List<ConsumAigua>? ConsumsSospitosos { get; set; }
+        public List<string>? MunicipisAmbTendenciaCreixent { get; set; }
 
         public VeureConsumAiguaModel(AppDbContext context) => _context = context;
 
@@ -20,11 +20,14 @@ namespace T5_PR1.Pages
         {
             Consums = _context.ConsumsAigua.ToList();
 
-            //Consultes LINQ
-            DeuMunicipisMesConsumidors = ConsultesAigua.GetDeuMunicipisMesConsumidors(Consums);
-            ConsumMitjaPerComarca = ConsultesAigua.GetConsumMitjaPerComarca(Consums);
-            ConsumsSospitosos = ConsultesAigua.GetConsumsSospitosos(Consums);
-            MunicipisAmbTendenciaCreixent = ConsultesAigua.GetMunicipisAmbTendenciaCreixent(Consums);
+            if (Consums.Count() != 0)
+            {
+                DeuMunicipisMesConsumidors = ConsultesAigua.GetDeuMunicipisMesConsumidors(Consums);
+                ConsumMitjaPerComarca = ConsultesAigua.GetConsumMitjaPerComarca(Consums);
+                ConsumsSospitosos = ConsultesAigua.GetConsumsSospitosos(Consums);
+                MunicipisAmbTendenciaCreixent = ConsultesAigua.GetMunicipisAmbTendenciaCreixent(Consums);
+            }
+   
         }
     }
 }

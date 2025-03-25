@@ -7,7 +7,7 @@ namespace T5_PR1.Pages
     public class VeureSimulacionsModel : PageModel
     {
         private readonly AppDbContext _context;
-        public List<Simulacio> Simulacions { get; set; }
+        public List<Simulacio>? Simulacions { get; set; }
 
         public VeureSimulacionsModel(AppDbContext context) => _context = context;
 
