@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using T5_PR1.Models;
-using T5_PR1.Models.ConsultesLINQ;
 using T5_PR1.Data;
 
 namespace T5_PR1.Pages
@@ -19,15 +18,16 @@ namespace T5_PR1.Pages
         public void OnGet()
         {
             Consums = _context.ConsumsAigua.ToList();
+        }
 
-            if (Consums.Count() != 0)
-            {
-                DeuMunicipisMesConsumidors = ConsultesAigua.GetDeuMunicipisMesConsumidors(Consums);
-                ConsumMitjaPerComarca = ConsultesAigua.GetConsumMitjaPerComarca(Consums);
-                ConsumsSospitosos = ConsultesAigua.GetConsumsSospitosos(Consums);
-                MunicipisAmbTendenciaCreixent = ConsultesAigua.GetMunicipisAmbTendenciaCreixent(Consums);
-            }
-   
+        public void OnPostDelete(int id)
+        {
+            ConsumAigua consum = _context.ConsumsAigua.Find(id);
+            _context.ConsumsAigua.Remove(consum);
+            _context.SaveChanges();
+
+            //Tornem a carregar les dades perquè es mostri la taula actualitzada
+            Consums = _context.ConsumsAigua.ToList();
         }
     }
 }

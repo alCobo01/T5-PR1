@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using T5_PR1.Data;
 using T5_PR1.Models;
+using T5_PR1.Models.ConsultesLINQ;
 
 namespace T5_PR1.Pages
 {
@@ -15,5 +16,16 @@ namespace T5_PR1.Pages
         {
             Simulacions = _context.Simulacions.ToList();
         }
+
+        public void OnPostDelete(int id)
+        {
+            Simulacio simulacio = _context.Simulacions.Find(id);
+            _context.Simulacions.Remove(simulacio);
+            _context.SaveChanges();
+
+            //Tornem a carregar les dades perquè es mostri la taula actualitzada
+            Simulacions = _context.Simulacions.ToList();
+        }
+
     }
 }

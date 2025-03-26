@@ -1,4 +1,4 @@
-﻿ using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 namespace T5_PR1.Models
@@ -15,8 +15,6 @@ namespace T5_PR1.Models
         public double Cost { get; set; }
         public double Preu { get; set; }
         public double EnergiaGenerada { get; set; }
-        public double CostTotal { get; set; }
-        public double PreuTotal { get; set; }
         public double Benefici { get; set; }
     }
 }

@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using T5_PR1.Models;
-using CsvHelper;
-using CsvHelper.Configuration;
-using System.Globalization;
 
 namespace T5_PR1.Data
 {

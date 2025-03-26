@@ -21,8 +21,25 @@ namespace T5_PR1.Pages
 
         public void OnGet()
         {
-            Indicadors = _context.IndicadorsEnergetics.ToList();
+            GetDataFromDatabase();
+        }
 
+        public void OnPostDelete(int id)
+        {
+            IndicadorEnergetic indicador = _context.IndicadorsEnergetics.Find(id);
+            _context.IndicadorsEnergetics.Remove(indicador);
+            _context.SaveChanges();
+
+            //Tornem a carregar les dades perquè es mostri la taula actualitzada
+            GetDataFromDatabase();
+        }
+
+        /// <summary>
+        /// Obté les dades de la base de dades i les assigna a les propietats corresponents.
+        /// </summary>
+        private void GetDataFromDatabase()
+        {
+            Indicadors = _context.IndicadorsEnergetics.ToList();
             if (Indicadors.Count() != 0)
             {
                 ProduccionsNetesGrans = ConsultesIndicadors.GetProdNetaGran(Indicadors);
