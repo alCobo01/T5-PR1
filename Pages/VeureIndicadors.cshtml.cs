@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
-using CsvHelper;
-using System.Globalization;
-using T5_PR1.Models.ConsultesLINQ;
 using T5_PR1.Models;
 using T5_PR1.Data;
 
@@ -21,7 +18,7 @@ namespace T5_PR1.Pages
 
         public void OnGet()
         {
-            GetDataFromDatabase();
+            Indicadors = _context.IndicadorsEnergetics.ToList();
         }
 
         public void OnPostDelete(int id)
@@ -31,22 +28,7 @@ namespace T5_PR1.Pages
             _context.SaveChanges();
 
             //Tornem a carregar les dades perquè es mostri la taula actualitzada
-            GetDataFromDatabase();
-        }
-
-        /// <summary>
-        /// Obté les dades de la base de dades i les assigna a les propietats corresponents.
-        /// </summary>
-        private void GetDataFromDatabase()
-        {
             Indicadors = _context.IndicadorsEnergetics.ToList();
-            if (Indicadors.Count() != 0)
-            {
-                ProduccionsNetesGrans = ConsultesIndicadors.GetProdNetaGran(Indicadors);
-                ConsumsGasolinaGrans = ConsultesIndicadors.GetConsumGasolinaGran(Indicadors);
-                ProduccionsMitjaPerAny = ConsultesIndicadors.GetProduccioMitjaPerAny(Indicadors);
-                DemandesIproduccionsGrans = ConsultesIndicadors.GetDemandaIproduccioGran(Indicadors);
-            }
         }
     }
 }

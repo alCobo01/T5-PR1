@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using T5_PR1.Data;
 using T5_PR1.Models;
-using T5_PR1.Models.ConsultesLINQ;
 
 namespace T5_PR1.Pages
 {

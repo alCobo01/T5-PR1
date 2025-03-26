@@ -11,18 +11,6 @@
 
 @if (Model.Consums != null && Model.Consums.Count() != 0)
 {
-    <div style="margin-bottom: 20px;">
-        <!-- Selector per canviar entre taules i consultes LINQ -->
-        <label for="tableSelector">Selecciona una taula:</label>
-        <select id="tableSelector">
-            <option value="tots">Tots els consums</option>
-            <option value="mesConsum">Municipis més consumidors</option>
-            <option value="mitjaComarca">Consum mitjà per comarca</option>
-            <option value="sospitosos">Consums sospitosos</option>
-            <option value="creixent">Municipis amb tendència creixent</option>
-        </select>
-    </div>
-
 	<!-- Taula de tots els consums -->
     <table class="table" id="table-tots">
         <thead>
@@ -43,7 +31,8 @@
                     <td>@consum.Poblacio</td>
                     <td>@consum.ConsumDomesticPerCapita</td>
                     <td>
-                        <form method="post" asp-page-handler="Delete" asp-route-id="@consum.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquest consum?');">
+                        <a asp-page="EditarConsumAigua" asp-route-id="@consum.Id" class="btn btn-primary">Editar</a>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@consum.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquest consum?');" style="display:inline;">
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>
                     </td>
