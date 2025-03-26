@@ -9,7 +9,7 @@
     <a asp-page="AfegirConsumAigua" class="btn btn-primary" style="margin-bottom: 20px">Afegir consum d'aigua</a>
 </div>
 
-@if (Model.Consums.Count() != 0)
+@if (Model.Consums != null && Model.Consums.Count() != 0)
 {
     <div style="margin-bottom: 20px;">
         <!-- Selector per canviar entre taules i consultes LINQ -->
@@ -28,13 +28,10 @@
         <thead>
             <tr>
                 <th>Any</th>
-                <th>Codi comarca</th>
                 <th>Comarca</th>
                 <th>Poblacio</th>
-                <th>Domèstic xarxa</th>
-                <th>Activitats econòmiques i fonts pròpies</th>
-                <th>Total</th>
                 <th>Consum domèstic per càpita</th>
+                <th>Accions</th>
             </tr>
         </thead>
         <tbody>
@@ -42,98 +39,18 @@
             {
                 <tr>
                     <td>@consum.Any</td>
-                    <td>@consum.CodiComarca</td>
                     <td>@consum.Comarca</td>
                     <td>@consum.Poblacio</td>
-                    <td>@consum.DomesticXarxa</td>
-                    <td>@consum.ActivitatsEconomiquesIFontsPropies</td>
-                    <td>@consum.Total</td>
                     <td>@consum.ConsumDomesticPerCapita</td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@consum.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquest consum?');">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
-
-    <!-- Top 10 municipis consumidors -->
-    <div id="table-mesConsum" style="display: none;">
-        @if (Model.DeuMunicipisMesConsumidors.Count() != 0)
-        {
-            <h3>Top 10 municipis consumidors</h3>
-            <ul>
-                @foreach (var consum in Model.DeuMunicipisMesConsumidors)
-                {
-                    <li>@consum.Poblacio - @consum.Total m³</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                <p>No hi ha dades sobre els 10 municipis amb més consum!</p>
-            </div>
-        }
-    </div>
-
-    <!-- Consum mitjà per comarca -->
-    <div id="table-mitjaComarca" style="display: none;">
-        @if (Model.ConsumMitjaPerComarca.Count() != 0)
-        {
-            <h3>Consum mitjà per comarca</h3>
-            <ul>
-                @foreach (var consum in Model.ConsumMitjaPerComarca)
-                {
-                    <li>@consum.Comarca (@consum.CodiComarca) - @consum.Total m³</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                <p>No hi ha dades de consum mitjà per comarca!</p>
-            </div>
-        }
-    </div>
-
-    <!-- Consums sospitosos -->
-    <div id="table-sospitosos" style="display: none;">
-        @if (Model.ConsumsSospitosos.Count() != 0)
-        {
-            <h3>Consums sospitosos (més de 999.999 m³)</h3>
-            <ul>
-                @foreach (var consum in Model.ConsumsSospitosos)
-                {
-                    <li>@consum.Poblacio - @consum.Total m³</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                <p>No s'han detectat consums sospitosos!</p>
-            </div>
-        }
-    </div>
-
-    <!-- Municipis amb tendència creixent -->
-    <div id="table-creixent" style="display: none;">
-        @if (Model.MunicipisAmbTendenciaCreixent.Count != 0)
-        {
-            <h3>Municipis amb tendència creixent</h3>
-            <ul>
-                @foreach (var municipi in Model.MunicipisAmbTendenciaCreixent)
-                {
-                    <li>@municipi</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                <p>No hi ha municipis amb tendència creixent!</p>
-            </div>
-        }
-    </div>
-
 }
 else
 {

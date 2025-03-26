@@ -9,7 +9,7 @@
     <a asp-page="AfegirSimulacio" class="btn btn-primary" style="margin-bottom: 20px">Afegir simulació</a>
 </div>
 
-@if (Model.Simulacions.Count() != 0)
+@if (Model.Simulacions != null && Model.Simulacions.Count != 0)
 {
     <p>S'han fet @Model.Simulacions.Count simulacions! </p>
     <table class="table">
@@ -25,6 +25,7 @@
                 <th>Cost total</th>
                 <th>Preu total</th>
                 <th>Benefici</th>
+                <th>Accions</th>
             </tr>
         </thead>
         <tbody>
@@ -38,9 +39,12 @@
                     <td>@simulacio.Cost</td>
                     <td>@simulacio.Preu</td>
                     <td>@simulacio.EnergiaGenerada</td>
-                    <td>@simulacio.CostTotal</td>
-                    <td>@simulacio.PreuTotal</td>
                     <td>@simulacio.Benefici</td>
+                    <td>
+                        <form method="post" asp-page-handler="Delete" asp-route-id="@simulacio.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquesta simulació?');">
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>

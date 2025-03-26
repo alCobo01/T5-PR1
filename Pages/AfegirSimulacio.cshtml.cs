@@ -57,8 +57,6 @@ namespace T5_PR1.Pages
                         Cost = SistemaSolar.Cost,
                         Preu = SistemaSolar.Preu,
                         EnergiaGenerada = SistemaSolar.CalcularEnergiaGenerada(),
-                        CostTotal = SistemaSolar.CalcularCostTotal(),
-                        PreuTotal = SistemaSolar.CalcularPreuTotal(),
                         Benefici = SistemaSolar.CalcularBenefici()
                     };
                     break;
@@ -79,8 +77,6 @@ namespace T5_PR1.Pages
                         Cost = SistemaEolic.Cost,
                         Preu = SistemaEolic.Preu,
                         EnergiaGenerada = SistemaEolic.CalcularEnergiaGenerada(),
-                        CostTotal = SistemaEolic.CalcularCostTotal(),
-                        PreuTotal = SistemaEolic.CalcularPreuTotal(),
                         Benefici = SistemaEolic.CalcularBenefici()
                     };
                     break;
@@ -101,8 +97,6 @@ namespace T5_PR1.Pages
                         Cost = SistemaHidroelectric.Cost,
                         Preu = SistemaHidroelectric.Preu,
                         EnergiaGenerada = SistemaHidroelectric.CalcularEnergiaGenerada(),
-                        CostTotal = SistemaHidroelectric.CalcularCostTotal(),
-                        PreuTotal = SistemaHidroelectric.CalcularPreuTotal(),
                         Benefici = SistemaHidroelectric.CalcularBenefici()
                     };
                     break;
