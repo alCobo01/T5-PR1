@@ -22,9 +22,6 @@
                 <th>Cost</th>
                 <th>Preu</th>
                 <th>Energia generada</th>
-                <th>Cost total</th>
-                <th>Preu total</th>
-                <th>Benefici</th>
                 <th>Accions</th>
             </tr>
         </thead>
@@ -39,8 +36,8 @@
                     <td>@simulacio.Cost</td>
                     <td>@simulacio.Preu</td>
                     <td>@simulacio.EnergiaGenerada</td>
-                    <td>@simulacio.Benefici</td>
                     <td>
+                        <a asp-page="EditarSimulacio" asp-route-id="@simulacio.Id" class="btn btn-primary">Editar</a>
                         <form method="post" asp-page-handler="Delete" asp-route-id="@simulacio.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquesta simulació?');">
                             <button type="submit" class="btn btn-danger">Eliminar</button>
                         </form>

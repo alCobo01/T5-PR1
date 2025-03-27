@@ -7,6 +7,7 @@
 
 <h2>Editar consum d'aigua</h2>
 <form method="post">
+    <input type="hidden" asp-for="ConsumAigua.Id" />
     <div class="form-group">
         <label asp-for="ConsumAigua.Any">Any</label>
         <input asp-for="ConsumAigua.Any" class="form-control" type="number" />

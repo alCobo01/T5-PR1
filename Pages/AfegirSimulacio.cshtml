@@ -14,6 +14,12 @@
 		</select>
 	</div>
 
+	<div class="form-group">
+		<label asp-for="SistemaEnergia.Data">Data del sistema</label>
+		<input asp-for="SistemaEnergia.Data" class="form-control" value="" />
+		<span asp-validation-for="SistemaEnergia.Data" class="text-danger"></span>
+	</div>
+
 	<!--Camps específics per cada tipus-->
 	<div id="campSolar" class="campos-especificos" style="display: none;">
 		<div class="form-group">

@@ -10,12 +10,9 @@ namespace T5_PR1.Pages
         private readonly AppDbContext _context;
 
         [BindProperty]
-        public IndicadorEnergetic Indicador { get; set; }
+        public IndicadorEnergetic? Indicador { get; set; }
 
-        public EditarIndicadorEnergeticModel(AppDbContext context)
-        {
-            _context = context;
-        }
+        public EditarIndicadorEnergeticModel(AppDbContext context) { _context = context; }
 
         public IActionResult OnGet(int id)
         {

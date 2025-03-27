@@ -7,8 +7,9 @@
 
 <h2>Editar indicador energètic</h2>
 <form method="post">
+	<input type="hidden" asp-for="Indicador.Id" />
 	<div class="form-group">
-		<label asp-for="Indicador.Data">Data de l'indicador'</label>
+		<label asp-for="Indicador.Data">Data de l'indicador</label>
 		<input asp-for="Indicador.Data" class="form-control"/>
 		<span asp-validation-for="Indicador.Data" class="text-danger"></span>
 	</div>
@@ -33,7 +34,7 @@
 		<span asp-validation-for="Indicador.CDEEBC_ProdDisp" class="text-danger"></span>
 	</div>
 
-	<button type="submit" class="btn btn-primary">Afegir indicador</button>
+	<button type="submit" class="btn btn-primary">Editar indicador</button>
 </form>
 
 @section Scripts {

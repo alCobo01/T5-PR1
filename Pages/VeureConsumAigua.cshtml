@@ -15,6 +15,7 @@
     <table class="table" id="table-tots">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Any</th>
                 <th>Comarca</th>
                 <th>Poblacio</th>
@@ -26,6 +27,7 @@
             @foreach (var consum in Model.Consums)
             {
                 <tr>
+					<td>@consum.Id</td>
                     <td>@consum.Any</td>
                     <td>@consum.Comarca</td>
                     <td>@consum.Poblacio</td>

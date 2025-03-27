@@ -26,7 +26,10 @@ namespace T5_PR1.Pages
 
         public IActionResult OnPost()
         {
-            _context.Update(ConsumAigua);
+            if (!ModelState.IsValid) { return Page(); }
+
+            _context.ConsumsAigua.Update(ConsumAigua);  
+
             _context.SaveChanges();
             return RedirectToPage("./VeureConsumAigua");
         }
