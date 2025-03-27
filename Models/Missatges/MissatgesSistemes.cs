@@ -11,6 +11,7 @@
             RatiObligatori = "El rati és un camp obligatori! ",
             CostObligatori = "El cost és un camp obligatori! ",
             PreuObligatori = "El preu és un camp obligatori! ",
-            TipusObligatori = "Has de seleccionar un tipus de sistema!";
+            TipusObligatori = "Has de seleccionar un tipus de sistema!",
+            RatiForaRang = "El rati ha d'estar entre 0.1 i 0.3! ";
     }
 }
