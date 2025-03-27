@@ -41,7 +41,7 @@ namespace T5_PR1.Pages
             switch (SistemaEnergia.Tipus)
             {
                 case TipusSistema.Solar:
-                    SistemaSolar.Data = DateTime.Now;
+                    SistemaSolar.Data = SistemaEnergia.Data;
                     SistemaSolar.Rati = SistemaEnergia.Rati;
                     SistemaSolar.Cost = SistemaEnergia.Cost;
                     SistemaSolar.Preu = SistemaEnergia.Preu;
@@ -61,7 +61,7 @@ namespace T5_PR1.Pages
                     };
                     break;
                 case TipusSistema.Eòlic:
-                    SistemaEolic.Data = DateTime.Now;
+                    SistemaEolic.Data = SistemaEnergia.Data;
                     SistemaEolic.Rati = SistemaEnergia.Rati;
                     SistemaEolic.Cost = SistemaEnergia.Cost;
                     SistemaEolic.Preu = SistemaEnergia.Preu;
@@ -81,7 +81,7 @@ namespace T5_PR1.Pages
                     };
                     break;
                 case TipusSistema.Hidroelèctric:
-                    SistemaHidroelectric.Data = DateTime.Now;
+                    SistemaHidroelectric.Data = SistemaEnergia.Data;
                     SistemaHidroelectric.Rati = SistemaEnergia.Rati;
                     SistemaHidroelectric.Cost = SistemaEnergia.Cost;
                     SistemaHidroelectric.Preu = SistemaEnergia.Preu;

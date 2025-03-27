@@ -1,0 +1,42 @@
+﻿@page
+@model T5_PR1.Pages.EditarIndicadorEnergeticModel
+@using T5_PR1.Models
+@{
+	ViewData["Title"] = "Editar indicador energètic";
+}
+
+<h2>Editar indicador energètic</h2>
+<form method="post">
+	<input type="hidden" asp-for="Indicador.Id" />
+	<div class="form-group">
+		<label asp-for="Indicador.Data">Data de l'indicador</label>
+		<input asp-for="Indicador.Data" class="form-control"/>
+		<span asp-validation-for="Indicador.Data" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Indicador.CDEEBC_ProdNeta">Producció neta</label>
+		<input asp-for="Indicador.CDEEBC_ProdNeta" class="form-control"/>
+		<span asp-validation-for="Indicador.CDEEBC_ProdNeta" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Indicador.CCAC_GasolinaAuto">Gasolina auto</label>
+		<input asp-for="Indicador.CCAC_GasolinaAuto" class="form-control"/>
+		<span asp-validation-for="Indicador.CCAC_GasolinaAuto" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Indicador.CDEEBC_DemandaElectr">Gasolina auto</label>
+		<input asp-for="Indicador.CDEEBC_DemandaElectr" class="form-control"/>
+		<span asp-validation-for="Indicador.CDEEBC_DemandaElectr" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Indicador.CDEEBC_ProdDisp">Producció disponible</label>
+		<input asp-for="Indicador.CDEEBC_ProdDisp" class="form-control"/>
+		<span asp-validation-for="Indicador.CDEEBC_ProdDisp" class="text-danger"></span>
+	</div>
+
+	<button type="submit" class="btn btn-primary">Editar indicador</button>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

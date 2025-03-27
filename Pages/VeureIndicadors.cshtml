@@ -11,18 +11,6 @@
 
 @if (Model.Indicadors != null && Model.Indicadors.Count() != 0)
 {
-    <div style="margin-bottom: 20px;">
-        <!-- Selector per canviar entre taules i consultes LINQ -->
-        <label for="tableSelector">Selecciona una taula:</label>
-        <select id="tableSelector" style="margin-left: 10px;">
-            <option value="tots">Tots els indicadors</option>
-            <option value="prodNeta">Indicadors amb producció neta més gran a 3000</option>
-            <option value="consumGas">Indicadors amb consum de gasolina més gran a 100</option>
-            <option value="prodMitja">Producció neta mitja per any</option>
-            <option value="demanda">Indicadors amb demanda elèctrica i producció disponible gran</option>
-        </select>
-    </div>
-
     <div id="table-tots">
         <table class="table table-striped">
             <thead>
@@ -41,12 +29,13 @@
 				{
 					<tr>
 						<td>@indicador.Id</td>
-						<td>@indicador.Data</td>
+                        <td>@indicador.Data.ToString("dd/MM/yyyy")</td>
 						<td>@indicador.CDEEBC_ProdNeta</td>
 						<td>@indicador.CCAC_GasolinaAuto</td>
 						<td>@indicador.CDEEBC_DemandaElectr</td>
 						<td>@indicador.CDEEBC_ProdDisp</td>
 						<td>
+							<a asp-page="EditarIndicadorEnergetic" asp-route-id="@indicador.Id" class="btn btn-primary">Editar</a>
                             <form method="post" asp-page-handler="Delete" asp-route-id="@indicador.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquest indicador energètic?');">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
                             </form>
@@ -55,85 +44,6 @@
 				}
             </tbody>
         </table>
-    </div>
-
-    
-
-    <!-- Taula de Produccions Netes més grans a 3000 -->
-    <div id="table-prodNeta" style="display: none;">
-        @if (Model.ProduccionsNetesGrans != null && Model.ProduccionsNetesGrans.Count() != 0)
-        {
-            <h3>Registres amb producció neta més gran a 3000</h3>
-            <ul>
-                @foreach (var indicador in Model.ProduccionsNetesGrans)
-                {
-                    <li>@indicador.Data - @indicador.CDEEBC_ProdNeta</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                <p>No hi ha registres amb producció neta més gran a 3000!</p>
-            </div>
-        }
-    </div>
-
-    <!-- Taula de Consums de gasolina més grans a 100 -->
-    <div id="table-consumGas" style="display: none;">
-        @if (Model.ConsumsGasolinaGrans != null && Model.ConsumsGasolinaGrans.Count() != 0)
-        {
-            <h3>Registres amb consum de gasolina més gran a 100</h3>
-            <ul>
-                @foreach (var indicador in Model.ConsumsGasolinaGrans)
-                {
-                    <li>@indicador.Data - @indicador.CCAC_GasolinaAuto</li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div class="alert alert-warning">
-                <p>No hi ha registres amb consum de gasolina més gran a 100!</p>
-            </div>
-        }
-    </div>
-
-    <!-- Taula de consums mitjans per any-->
-    <div id="table-prodMitja" style="display: none;">
-        @if (Model.ProduccionsMitjaPerAny != null && Model.ProduccionsMitjaPerAny.Count() != 0)
-        {
-            <h3>Produccions mitjanes per any</h3>
-            <ul>
-                @foreach (var indicador in Model.ProduccionsMitjaPerAny)
-                {
-                    <li>@indicador.Data.Year - @indicador.CDEEBC_ProdNeta</li>
-                }
-            </ul>
-        } else
-        {
-            <div class="alert alert-warning">
-                <p>Encara no existeix cap indicador energètic!</p>
-            </div>
-        }
-    </div>
-
-    <!-- Taula de demanda elèctrica major a 4000 i prod. disponible més gran que 300 -->
-    <div id="table-demanda" style="display: none;">
-        @if (Model.DemandesIproduccionsGrans != null && Model.DemandesIproduccionsGrans.Count() != 0)
-        {
-            <h3>Registres amb demanda elèctrica més gran que 4000 i producció disponible més gran que 300</h3>
-            <ul>
-                @foreach (var indicador in Model.DemandesIproduccionsGrans)
-                {
-                    <li>@indicador.Data - @indicador.CDEEBC_DemandaElectr - @indicador.CDEEBC_ProdDisp</li>
-                }
-            </ul>
-        } else {
-            <div class="alert alert-warning">
-                <p>Encara no existeix cap indicador amb demanda elèctrica més gran que 4000 i producció disponible més gran que 300!</p>
-            </div>
-        }
     </div>
 }
 else
