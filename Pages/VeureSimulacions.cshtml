@@ -12,31 +12,33 @@
 @if (Model.Simulacions != null && Model.Simulacions.Count != 0)
 {
     <p>S'han fet @Model.Simulacions.Count simulacions! </p>
-    <table class="table">
+    <table class="table text-center">
         <thead>
             <tr>
-                <th>Tipus de simulació</th>
-                <th>Data</th>
-                <th>Dada</th>
-                <th>Rati</th>
-                <th>Cost</th>
-                <th>Preu</th>
-                <th>Energia generada</th>
-                <th>Accions</th>
+                <th class="align-middle">ID</th>
+                <th class="align-middle">Tipus de simulació</th>
+                <th class="align-middle">Data</th>
+                <th class="align-middle">Dada</th>
+                <th class="align-middle">Rati</th>
+                <th class="align-middle">Cost</th>
+                <th class="align-middle">Preu</th>
+                <th class="align-middle">Energia generada</th>
+                <th class="align-middle">Accions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var simulacio in Model.Simulacions)
             {
                 <tr>
-                    <td>@simulacio.Tipus</td>
-                    <td>@simulacio.Data</td>
-                    <td>@simulacio.Dada</td>
-                    <td>@simulacio.Rati</td>
-                    <td>@simulacio.Cost</td>
-                    <td>@simulacio.Preu</td>
-                    <td>@simulacio.EnergiaGenerada</td>
-                    <td>
+                    <td class="align-middle">@simulacio.Id</td>
+                    <td class="align-middle">@simulacio.Tipus</td>
+                    <td class="align-middle">@simulacio.Data.ToString("dd/MM/yyyy")</td>
+                    <td class="align-middle">@simulacio.Dada</td>
+                    <td class="align-middle">@simulacio.Rati</td>
+                    <td class="align-middle">@simulacio.Cost €/kWh</td>
+                    <td class="align-middle">@simulacio.Preu €/kWh</td>
+                    <td class="align-middle">@simulacio.EnergiaGenerada kWh</td>
+                    <td class="align-middle d-flex gap-2 justify-content-center">
                         <a asp-page="EditarSimulacio" asp-route-id="@simulacio.Id" class="btn btn-primary">Editar</a>
                         <form method="post" asp-page-handler="Delete" asp-route-id="@simulacio.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquesta simulació?');">
                             <button type="submit" class="btn btn-danger">Eliminar</button>

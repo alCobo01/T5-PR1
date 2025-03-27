@@ -12,27 +12,27 @@
 @if (Model.Consums != null && Model.Consums.Count() != 0)
 {
 	<!-- Taula de tots els consums -->
-    <table class="table" id="table-tots">
+    <table class="table text-center" id="table-tots">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Any</th>
-                <th>Comarca</th>
-                <th>Poblacio</th>
-                <th>Consum domèstic per càpita</th>
-                <th>Accions</th>
+                <th class="align-middle">ID</th>
+                <th class="align-middle">Any</th>
+                <th class="align-middle">Comarca</th>
+                <th class="align-middle">Poblacio</th>
+                <th class="align-middle">Consum domèstic per càpita</th>
+                <th class="align-middle">Accions</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var consum in Model.Consums)
             {
                 <tr>
-					<td>@consum.Id</td>
-                    <td>@consum.Any</td>
-                    <td>@consum.Comarca</td>
-                    <td>@consum.Poblacio</td>
-                    <td>@consum.ConsumDomesticPerCapita</td>
-                    <td>
+					<td class="align-middle">@consum.Id</td>
+                    <td class="align-middle">@consum.Any</td>
+                    <td class="align-middle">@consum.Comarca</td>
+                    <td class="align-middle">@consum.Poblacio</td>
+                    <td class="align-middle">@consum.ConsumDomesticPerCapita</td>
+                    <td class="align-middle d-flex gap-2 justify-content-center">
                         <a asp-page="EditarConsumAigua" asp-route-id="@consum.Id" class="btn btn-primary">Editar</a>
                         <form method="post" asp-page-handler="Delete" asp-route-id="@consum.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquest consum?');" style="display:inline;">
                             <button type="submit" class="btn btn-danger">Eliminar</button>

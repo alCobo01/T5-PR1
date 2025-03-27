@@ -12,29 +12,29 @@
 @if (Model.Indicadors != null && Model.Indicadors.Count() != 0)
 {
     <div id="table-tots">
-        <table class="table table-striped">
+        <table class="table text-center">
             <thead>
 				<tr>
-					<th>ID</th>
-					<th>Any</th>
-					<th>Producció neta</th>
-					<th>Consum gasolina</th>
-					<th>Demanda elèctrica</th>
-					<th>Producció disponible</th>
-					<th>Accions</th>
+					<th class="align-middle">ID</th>
+					<th class="align-middle">Any</th>
+					<th class="align-middle">Producció neta</th>
+					<th class="align-middle">Consum gasolina</th>
+					<th class="align-middle">Demanda elèctrica</th>
+					<th class="align-middle">Producció disponible</th>
+					<th class="align-middle">Accions</th>
 				</tr>
             </thead>
             <tbody>
 				@foreach (var indicador in Model.Indicadors)
 				{
 					<tr>
-						<td>@indicador.Id</td>
-                        <td>@indicador.Data.ToString("dd/MM/yyyy")</td>
-						<td>@indicador.CDEEBC_ProdNeta</td>
-						<td>@indicador.CCAC_GasolinaAuto</td>
-						<td>@indicador.CDEEBC_DemandaElectr</td>
-						<td>@indicador.CDEEBC_ProdDisp</td>
-						<td>
+						<td class="align-middle">@indicador.Id</td>
+                        <td class="align-middle">@indicador.Data.ToString("dd/MM/yyyy")</td>
+						<td class="align-middle">@indicador.CDEEBC_ProdNeta</td>
+						<td class="align-middle">@indicador.CCAC_GasolinaAuto L</td>
+						<td class="align-middle">@indicador.CDEEBC_DemandaElectr</td>
+						<td class="align-middle">@indicador.CDEEBC_ProdDisp</td>
+						<td class="align-middle d-flex gap-2 justify-content-center">
 							<a asp-page="EditarIndicadorEnergetic" asp-route-id="@indicador.Id" class="btn btn-primary">Editar</a>
                             <form method="post" asp-page-handler="Delete" asp-route-id="@indicador.Id" onsubmit="return confirm('Estàs segur que vols eliminar aquest indicador energètic?');">
                                 <button type="submit" class="btn btn-danger">Eliminar</button>
